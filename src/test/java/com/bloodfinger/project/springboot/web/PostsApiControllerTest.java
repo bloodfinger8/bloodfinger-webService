@@ -4,6 +4,7 @@ import com.bloodfinger.project.springboot.domain.posts.Posts;
 import com.bloodfinger.project.springboot.domain.posts.PostsRepository;
 import com.bloodfinger.project.springboot.web.dto.PostsSaveRequestDto;
 import com.bloodfinger.project.springboot.web.dto.PostsUpdateRequestDto;
+
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PostsAPIControllerTest {
+public class PostsApiControllerTest {
 
     @LocalServerPort
     private int port;
@@ -64,12 +65,13 @@ public class PostsAPIControllerTest {
     }
 
     @Test
-    public void Posts_update() throws Exception {
-
+    public void Posts_수정된다() throws Exception {
+        //given
         Posts savedPosts = postsRepository.save(Posts.builder()
                 .title("title")
                 .content("content")
-                .author("author"));
+                .author("author")
+                .build());
 
         Long updateId = savedPosts.getId();
         String expectedTitle = "title2";
@@ -82,12 +84,11 @@ public class PostsAPIControllerTest {
 
         String url  = "http://localhost:" + port + "/api/v1/posts/" + updateId;
 
-        HttpEntity<PostsUpdateRequestDto> requestEntity
-                =new HttpEntity<>(requestDto);
-
+        HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
+        //when
         ResponseEntity<Long> responseEntity = restTemplate.
                 exchange(url , HttpMethod.PUT, requestEntity , Long.class);
-
+        //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
