@@ -31,7 +31,7 @@ public class Posts extends BaseTimeEntity {
         this.author = author;
     }
 
-    @Builder
+
     public void update(String title , String content){
         this.title = title;
         this.content = content;
