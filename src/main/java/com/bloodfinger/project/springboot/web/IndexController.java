@@ -21,19 +21,34 @@ public class IndexController {
     private final HttpSession httpSession;
 
 
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts" , postsService.findAllDesc());
 
-//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
         if(user != null){
             model.addAttribute("userName" , user.getName());
         }
-
 //          model.addAttribute("display", "layout/container");
-
         return "index";
     }
+
+    @GetMapping("/notice")
+    public String notice(){
+        return "notice";
+    }
+
+    //예약
+    @GetMapping("/reservation/save")
+    public String reservation(){
+        return "reservation-save";
+    }
+
+//    //lesson
+//    @GetMapping("/lesson")
+//    public String lesson(){
+//        return "lesson";
+//    }
+
 
     @GetMapping("/posts/save")
     public String postsSave(){

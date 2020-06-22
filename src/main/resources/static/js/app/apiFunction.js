@@ -10,6 +10,11 @@ var main = {
         $('#btn-delete').on('click' , function() {
             _this.delete();
         });
+
+        $('#btn-reservation').on('click' , function() {
+            _this.reservationSave();
+        });
+
     },
     save : function(){
         var data = {
@@ -29,6 +34,13 @@ var main = {
         }).fail(function() {
             alert(JSON.stringify(error));
         });
+    },
+    reservationSave : function() {
+        var data = {
+            phn_no =
+        }
+
+
     },
     update : function() {
         var data = {
