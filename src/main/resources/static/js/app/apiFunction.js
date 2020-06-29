@@ -10,7 +10,6 @@ var main = {
         $('#btn-delete').on('click' , function() {
             _this.delete();
         });
-
         $('#btn-reservation').on('click' , function() {
             _this.reservationSave();
         });
@@ -30,17 +29,37 @@ var main = {
             data : JSON.stringify(data)
         }).done(function() {
             alert('글이 등록 되었습니다.');
-            window.location.href = '/';
+            window.location.href = '/notice';
         }).fail(function() {
             alert(JSON.stringify(error));
         });
     },
-    reservationSave : function() {
+    reservationSave : function(){
         var data = {
-            phn_no =
-        }
-
-
+            name : $('#name').val(),
+            phnNo : $('#phnNo').val(),
+            sex : $('#sex').val(),
+            date : $('#date').val(),
+            time : $('#time').val(),
+            type : $('#type').val(),
+            personNo : $('#personNo').val(),
+            realSender : $('#realSender').val(),
+            comment : $('#comment').val(),
+            privacyPermission : $('#privacyPermission').val()
+        };
+        $.ajax({
+            type: 'POST' ,
+            url : '/api/v1/reservation',
+            dataType : 'json' ,
+            contentType : 'application/json; charset=utf-8',
+            data : JSON.stringify(data)
+        }).done(function() {
+            alert('예약이 완료 되었습니다.');
+            window.location.href = '/index';
+        }).fail(function() {
+            //alert(JSON.stringify(error));
+            alert(err);
+        });
     },
     update : function() {
         var data = {

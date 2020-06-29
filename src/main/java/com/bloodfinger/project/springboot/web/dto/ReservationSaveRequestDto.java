@@ -16,7 +16,7 @@ public class ReservationSaveRequestDto {
     private String date;
     private String time;
     private String type;
-    private int personNo;
+    private String personNo;
     private String realSender;
     private String comment;
     private String privacyPermission;
@@ -24,7 +24,7 @@ public class ReservationSaveRequestDto {
 
     @Builder
     public ReservationSaveRequestDto(String name , String phnNo, String sex , String date , String time , String type,
-                                     int personNo , String realSender , String comment , String privacyPermission){
+                                     String personNo , String realSender , String comment , String privacyPermission){
         this.name = name;
         this.phnNo = phnNo;
         this.sex = sex;

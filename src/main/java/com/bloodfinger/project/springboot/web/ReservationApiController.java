@@ -5,6 +5,7 @@ import com.bloodfinger.project.springboot.web.dto.PostsSaveRequestDto;
 import com.bloodfinger.project.springboot.web.dto.ReservationSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import net.bytebuddy.implementation.bind.MethodDelegationBinder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,15 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ReservationApiController {
 
-    private ReservationService reservationService;
+    private final ReservationService reservationService;
 
 
     @PostMapping("/api/v1/reservation")
     public Long save(@RequestBody ReservationSaveRequestDto reservationSaveRequestDto){
-
-        System.out.println("나와랏 :: " + reservationSaveRequestDto);
-        //return reservationService.save(reservationSaveRequestDto);
-        return null;
+          return reservationService.save(reservationSaveRequestDto);
     }
 
 

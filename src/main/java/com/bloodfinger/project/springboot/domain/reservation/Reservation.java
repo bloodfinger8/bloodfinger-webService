@@ -34,8 +34,8 @@ public class Reservation extends BaseTimeEntity {
     @Column
     private String type;
 
-    @Column(columnDefinition = "", nullable = false)
-    private int personNo;
+    @Column(nullable = false)
+    private String personNo;
 
     @Column( nullable = false)
     private String realSender;
@@ -49,7 +49,7 @@ public class Reservation extends BaseTimeEntity {
 
     @Builder
     public Reservation(String name ,String phnNo, String sex , String date , String time , String type,
-                       int personNo , String realSender , String comment , String privacyPermission){
+                       String personNo , String realSender , String comment , String privacyPermission){
         this.name = name;
         this.phnNo = phnNo;
         this.sex = sex;

@@ -15,6 +15,6 @@ public class ReservationService {
 
     @Transactional
     public Long save(ReservationSaveRequestDto reservationSaveRequestDto){
-        return reservationRepository.save(reservationSaveRequestDto.toEntity()).getNo();
+         return reservationRepository.save(reservationSaveRequestDto.toEntity()).getNo();
     }
 }

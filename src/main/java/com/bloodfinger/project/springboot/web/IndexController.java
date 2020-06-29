@@ -21,19 +21,19 @@ public class IndexController {
     private final HttpSession httpSession;
 
 
-    @GetMapping("/index")
-    public String index(Model model, @LoginUser SessionUser user){
-        model.addAttribute("posts" , postsService.findAllDesc());
-
+    @GetMapping("/")
+    public String index(Model model , @LoginUser SessionUser user){
         if(user != null){
             model.addAttribute("userName" , user.getName());
         }
-//          model.addAttribute("display", "layout/container");
+
         return "index";
     }
 
     @GetMapping("/notice")
-    public String notice(){
+    public String notice(Model model){
+        model.addAttribute("posts" , postsService.findAllDesc());
+
         return "notice";
     }
 
@@ -60,6 +60,15 @@ public class IndexController {
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post" , dto);
         return "posts-update";
+    }
+
+    @GetMapping("/loginForm")
+    public String loginForm(Model model , @LoginUser SessionUser user){
+        if(user != null){
+            model.addAttribute("userName" , user.getName());
+        }
+
+        return "loginForm";
     }
 
 
