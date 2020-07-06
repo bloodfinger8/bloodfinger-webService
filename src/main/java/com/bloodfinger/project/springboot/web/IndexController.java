@@ -31,8 +31,12 @@ public class IndexController {
     }
 
     @GetMapping("/notice")
-    public String notice(Model model){
+    public String notice(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts" , postsService.findAllDesc());
+
+        if(user != null){
+            model.addAttribute("userName" , user.getName());
+        }
 
         return "notice";
     }
@@ -49,9 +53,11 @@ public class IndexController {
 //        return "lesson";
 //    }
 
-
     @GetMapping("/posts/save")
-    public String postsSave(){
+    public String postsSave(Model model , @LoginUser SessionUser user){
+        if(user != null){
+            model.addAttribute("userName" , user.getName());
+        }
         return "posts-save";
     }
 
