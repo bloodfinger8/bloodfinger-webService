@@ -1,6 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
 
-{{>layout/header}}
+<body>
 
+<header th:replace="fragments/bodyHeader :: bodyHeader" />
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="clearfix">
@@ -8,33 +14,26 @@
         <div class="row justify-content-center align-self-center">
             <div class="col-md-9 intro-info order-md-first order-last wow bounceInUp" data-wow-duration="2.0s">
                 <h2>드라마틱한 <br>또 다른 나의 모습 <br><span>AT THE J에서 변화하세요</span></h2>
-<!--                <div>-->
-<!--                    <a href="#about" class="btn-get-started scrollto">Get Started</a>-->
-<!--                </div>-->
+                <!--                <div>-->
+                <!--                    <a href="#about" class="btn-get-started scrollto">Get Started</a>-->
+                <!--                </div>-->
             </div>
-
             <div class="col-md-6 intro-img order-md-last order-first">
-<!--                <img src="/img/intro-img.svg" alt="" class="img-fluid">-->
+                <!--                <img src="/img/intro-img.svg" alt="" class="img-fluid">-->
             </div>
         </div>
-
     </div>
 </section><!-- End Hero -->
 
 <main id="main">
-
-    <!-- ======= About Section ======= -->
     <section id="about" class="about">
-
         <div class="container">
             <div class="row">
-
                 <div class="col-lg-5 col-md-6">
                     <div class="about-img">
                         <img src="/img/about-img.jpg" alt="">
                     </div>
                 </div>
-
                 <div class="col-lg-7 col-md-6">
                     <div class="about-content">
                         <h2>About Us</h2>
@@ -56,8 +55,7 @@
                 </div>
             </div>
         </div>
-    </section><!-- End About Section -->
-
+    </section>
 
     <section id="portfolio" class="portfolio section-bg">
         <div class="container">
@@ -65,7 +63,6 @@
                 <h3>INSTAGRAM GALLERY</h3>
             </div>
             <div class="row" id="instagram">
-
             </div>
         </div>
     </section>
@@ -84,14 +81,11 @@
         </div>
     </section>
 
-    <!-- ======= Clients Section ======= -->
     <section id="clients" class="clients wow fadeInUp">
         <div class="container">
-
             <header class="section-header">
                 <h3>Our Clients</h3>
             </header>
-
             <div class="owl-carousel clients-carousel">
                 <img src="/img/clients/client-1.png" alt="">
                 <img src="/img/clients/client-2.png" alt="">
@@ -102,23 +96,16 @@
                 <img src="/img/clients/client-7.png" alt="">
                 <img src="/img/clients/client-8.png" alt="">
             </div>
-
         </div>
-    </section><!-- End Clients Section -->
+    </section>
 
-    <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing section-bg wow fadeInUp">
-
         <div class="container">
-
             <header class="section-header">
                 <h3>예약 과정</h3>
                 <p>예약을 위한 과정 </p>
             </header>
-
             <div class="row flex-items-xs-middle flex-items-xs-center">
-
-                <!-- Basic Plan  -->
                 <div class="col-xs-12 col-lg-3">
                     <div class="card">
                         <div class="card-header">
@@ -141,7 +128,6 @@
                     </div>
                 </div>
 
-                <!-- Regular Plan  -->
                 <div class="col-xs-12 col-lg-3">
                     <div class="card">
                         <div class="card-header">
@@ -163,7 +149,6 @@
                     </div>
                 </div>
 
-                <!-- Premium Plan  -->
                 <div class="col-xs-12 col-lg-3">
                     <div class="card">
                         <div class="card-header">
@@ -205,9 +190,8 @@
                 </div>
             </div>
         </div>
-    </section><!-- End Pricing Section -->
+    </section>
 
-    <!-- ======= F.A.Q Section ======= -->
     <section id="faq" class="faq wow fadeInUp">
         <div class="container">
             <header class="section-header">
@@ -264,6 +248,8 @@
         </div>
     </section>
 </main>
-
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-{{>layout/footer}}
+<div th:replace="fragments/footer :: footer" />
+
+</body>
+</html>

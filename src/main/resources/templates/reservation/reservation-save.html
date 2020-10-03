@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<header th:replace="fragments/bodyHeader :: bodyHeader" />
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="form">
+
+                    <h4>예약신청은 양식에 따라 정확히 작성해주세요</h4>
+                    <p>Eos ipsa est voluptates. Nostrum nam libero ipsa vero. Debitis quasi sit eaque numquam similique commodi harum aut temporibus.</p>
+
+                    <form>
+                        <div class="form-group">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="예약자 이름을 입력해주세요. "  />
+                            <div class="validate"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="phnNo" id="phnNo" placeholder="연락처를 입력해주세요. "  data-msg="Please enter a valid email" />
+                            <div class="validate"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="date" id="date" placeholder="예약날짜" data-msg="Please enter at least 8 chars of subject" />
+                            <div class="validate"></div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="time" id="time" placeholder="예약시간"  />
+                            <div class="validate"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" name="comment" id="comment" rows="5"  placeholder="요청하실 내용을 입력해주세요."></textarea>
+                            <div class="validate"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="loading">
+                                <input type="checkbox" name="privacyPermission" id="privacyPermission" value="s">  개인정보 수집 및 이용을 읽고 동의합니다.
+                            </div>
+                            <div class="error-message"></div>
+                            <div class="sent-message"></div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="button" title="Send Message" id="btn-reservation">예약하기</button>
+                        </div>
+
+                        <section id="faq" class="faq wow fadeInUp">
+                            <div class="container">
+
+                                <ul id="faq-list" class="wow fadeInUp">
+                                    <li>
+                                        <a data-toggle="collapse" class="collapsed" href="#faq1">개인정보 수집동의<i class="ion-android-remove"></i></a>
+                                        <div id="faq1" class="collapse" data-parent="#faq-list">
+                                            <p>
+                                                &lt;개인정보 수집 동의&gt;<br><br>
+                                                1. 기본수집항목: [필수] 네이버 아이디, 이름, (휴대)전화번호, [선택] 이메일 주소<br>※ 추가 수집하는 필수항목<br>- 배송, 방문 등이 필요한 상품 구매 시 : 주소<br>- 해외 여행 관련 상품 구매 시 : 여권상 영문명, 여권번호 끝 4자리, 성별, 생년월일, 이메일주소, 카카오톡ID, 동행 아동정보(여권상 영문명, 생년월일, 신장)<br>- 병원을 이용하는 경우: 생년월일<br><br>
+                                                2. 수집 및 이용목적 : 사업자회원과 예약이용자의 원활한 거래 진행, 고객상담, 불만처리 등 민원 처리, 분쟁조정 해결을 위한 기록보존, 네이버 예약 이용 후 리뷰작성에 따른 네이버페이 포인트 지급 및 관련 안내<br><br>
+                                                3. 보관기간<br>
+                                                - 회원탈퇴 등 개인정보 이용목적 달성 시까지 보관<br>
+                                                - 단, 상법 및 ‘전자상거래 등에서의 소비자 보호에 관한 법률’ 등 관련 법령에 의하여 일정 기간 보관이 필요한 경우에는 해당 기간 동안 보관함<br><br>
+                                                4. 동의 거부권 등에 대한 고지: 정보주체는 개인정보의 수집 및 이용 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.<br>
+
+                                            </p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <a data-toggle="collapse" href="#faq2" class="collapsed">개인정보 제공동의<i class="ion-android-remove"></i></a>
+                                        <div id="faq2" class="collapse" data-parent="#faq-list">
+                                            <p>
+
+                                                &lt;개인정보 제공 동의&gt;<br><br>
+                                                1. 개인정보를 제공받는 자 : 엣더제이<br><br>
+                                                2. 제공하는 기본 개인정보 항목:
+                                                &nbsp;[필수] 네이버 아이디, 이름, (휴대)전화번호, 성별, 연령대, [선택] 이메일 주소<br>※ 추가 제공하는 필수항목<br>- 배송, 방문 등이 필요한 상품 구매 시 : 주소<br>- 해외 여행 관련 상품 구매 시 : 여권상 영문명, 여권번호 끝 4자리, 생년월일, 이메일주소, 카카오톡ID, 동행 아동정보(여권상 영문명, 생년월일, 신장)<br>- 병원을 이용하는 경우: 생년월일<br><br>
+                                                3. 개인정보를 제공받는 자의 이용목적 : 사업자회원과 예약이용자의 원활한 거래 진행, 서비스 분석과 통계에 따른 혜택 및 맞춤 서비스 제공, 민원처리 등 고객상담, 고객관리, 서비스 이용에 따른 설문조사 및 혜택 제공, 분쟁조정을 위한 기록보존<br><br>
+                                                4. 개인정보를 제공받는 자의 개인정보 보유 및 이용기간 : 네이버 회원탈퇴 시 또는 위 개인정보 이용목적 달성 시 까지 이용합니다.<br><br>
+                                                5. 동의 거부권 등에 대한 고지 : 정보주체는 개인정보 제공 동의를 거부할 권리가 있으나, 이 경우 상품 및 서비스 예약이 제한될 수 있습니다.<br>
+
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="services" class="services">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>예약</h3>
+                <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus.</p>
+            </header>
+
+            <div class="row">
+
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #fceef3;"><i class="ion-ios-analytics-outline" style="color: #ff689b;"></i></div>
+                        <h4 class="title"><a href="">데일리 메이크업</a></h4>
+                        <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #fff0da;"><i class="ion-ios-bookmarks-outline" style="color: #e98e06;"></i></div>
+                        <h4 class="title"><a href="">세미 스모키 메이크업</a></h4>
+                        <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #e6fdfc;"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+                        <h4 class="title"><a href="">미디어 포토 메이크업</a></h4>
+                        <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #eafde7;"><i class="ion-ios-speedometer-outline" style="color:#41cf2e;"></i></div>
+                        <h4 class="title"><a href="">혼주 상견례 메이크업</a></h4>
+                        <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #e1eeff;"><i class="ion-ios-world-outline" style="color: #2282ff;"></i></div>
+                        <h4 class="title"><a href="">웨딩 메이크업</a></h4>
+                        <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+                    <div class="box">
+                        <div class="icon" style="background: #ecebff;"><i class="ion-ios-clock-outline" style="color: #8660fe;"></i></div>
+                        <h4 class="title"><a href="">남자 기본 헤어 메이크업</a></h4>
+                        <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    <div th:replace="fragments/footer :: footer" />
+</body>
+</html>

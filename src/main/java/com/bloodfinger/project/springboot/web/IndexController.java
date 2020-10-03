@@ -26,7 +26,6 @@ public class IndexController {
         if(user != null){
             model.addAttribute("userName" , user.getName());
         }
-
         return "index";
     }
 
@@ -37,14 +36,13 @@ public class IndexController {
         if(user != null){
             model.addAttribute("userName" , user.getName());
         }
-
         return "notice";
     }
 
     //예약
     @GetMapping("/reservation/save")
     public String reservation(){
-        return "reservation-save";
+        return "reservation/reservation-save";
     }
 
 //    //lesson
