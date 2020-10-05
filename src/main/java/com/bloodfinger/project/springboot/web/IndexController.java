@@ -40,8 +40,13 @@ public class IndexController {
     }
 
     //예약
-    @GetMapping("/reservation/save")
+    @GetMapping("/reservation/kind")
     public String reservation(){
+        return "reservation/reservation-kind";
+    }
+
+    @GetMapping("/reservation/save")
+    public String reservationSave(){
         return "reservation/reservation-save";
     }
 

@@ -22,9 +22,6 @@ public class Reservation extends BaseTimeEntity {
     @Column( nullable = false)
     private String phnNo;
 
-    @Column
-    private String sex;
-
     @Column(nullable = false)
     private String date;
 
@@ -34,12 +31,6 @@ public class Reservation extends BaseTimeEntity {
     @Column
     private String type;
 
-    @Column(nullable = false)
-    private String personNo;
-
-    @Column( nullable = false)
-    private String realSender;
-
     @Column
     private String comment;
 
@@ -48,16 +39,13 @@ public class Reservation extends BaseTimeEntity {
 
 
     @Builder
-    public Reservation(String name ,String phnNo, String sex , String date , String time , String type,
-                       String personNo , String realSender , String comment , String privacyPermission){
+    public Reservation(String name ,String phnNo, String date , String time , String type,
+                       String comment , String privacyPermission){
         this.name = name;
         this.phnNo = phnNo;
-        this.sex = sex;
         this.date = date;
         this.time = time;
         this.type = type;
-        this.personNo = personNo;
-        this.realSender = realSender;
         this.comment = comment;
         this.privacyPermission = privacyPermission;
     }
