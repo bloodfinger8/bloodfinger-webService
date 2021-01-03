@@ -4,6 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
+<style>
+.fieldError {
+    border-color: #bd2130;
+}
+</style>
+
 <body>
 <header th:replace="fragments/bodyHeader :: bodyHeader" />
 
@@ -11,39 +17,42 @@
         <div class="container">
             <div class="form">
                 <h4>예약자 정보</h4>
-                <form>
+                <form role="form" action="/reservation/save" th:object="${dto}" method="post">
+
                     <div class="form-group row">
-                        <label for="name" class="col-sm-2 col-form-label">예약자</label>
+                        <label th:for="name" class="col-sm-2 col-form-label">예약자</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="name" id="name" placeholder="예약자 이름을 입력해주세요. "/>
+                            <input type="text" th:field="*{name}" class="form-control" placeholder="예약자 이름을 입력해주세요."
+                                   th:class="${#fields.hasErrors('name')}? 'form-control fieldError' : 'form-control'">
+                            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect name</p>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="phnNo" class="col-sm-2 col-form-label">연락처</label>
+                        <label th:for="phnNo" class="col-sm-2 col-form-label">연락처</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="phnNo" id="phnNo" placeholder="연락처를 입력해주세요. "/>
+                            <input type="text" th:field="*{phnNo}" class="form-control" placeholder="연락처를 입력해주세요. ">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="date" class="col-sm-2 col-form-label">예약 날짜</label>
+                        <label th:for="date" class="col-sm-2 col-form-label">예약 날짜</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="date" id="date" placeholder="연락처를 입력해주세요. "/>
+                            <input type="text" th:field="*{date}" class="form-control" placeholder="연락처를 입력해주세요. ">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="time" class="col-sm-2 col-form-label">예약 시간</label>
+                        <label th:for="time" class="col-sm-2 col-form-label">예약 시간</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="time" id="time" placeholder="예약 시간"/>
+                            <input type="text" th:field="*{time}" class="form-control" placeholder="예약 시간">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="comment" class="col-sm-2 col-form-label">요청 사항</label>
+                        <label th:for="comment" class="col-sm-2 col-form-label">요청 사항</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" name="comment" id="comment" placeholder="요청하실 내용을 입력해주세요."/>
+                            <input type="text" th:field="*{comment}" class="form-control" placeholder="요청하실 내용을 입력해주세요.">
                         </div>
                     </div>
 
@@ -102,11 +111,11 @@
     </section>
 
 
-
-
-
-
     <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
     <div th:replace="fragments/footer :: footer" />
+
+    <script th:inline="javascript">
+
+    </script>
 </body>
 </html>
