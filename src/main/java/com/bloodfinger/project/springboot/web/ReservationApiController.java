@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @RequiredArgsConstructor
 @Controller
@@ -24,16 +26,28 @@ public class ReservationApiController {
 
     @GetMapping("/reservation/save")
     public String reservationSave( Model model){
-        ReservationSaveRequestDto dto = new ReservationSaveRequestDto();
-        model.addAttribute("dto" , dto);
-        return "reservation/reservation-save";
+        ReservationSaveRequestDto reservationSaveRequestDto = new ReservationSaveRequestDto();
+        model.addAttribute("reservationSaveRequestDto" , reservationSaveRequestDto);
+        return "reservation/reservationForm";
     }
 
     @PostMapping("/reservation/save")
-    public String reservationCreated(@Valid ReservationSaveRequestDto dto , BindingResult result){
+    public String reservationCreated(@Valid ReservationSaveRequestDto reservationSaveRequestDto , BindingResult result){
         if(result.hasErrors()) {
-            return "reservation/reservation-save";
+            return "reservation/reservationForm";
         }
+
+        //reservationService.save(reservationSaveRequestDto);
+
+        //이메일 전송
+        try {
+            reservationService.sendEmail(reservationSaveRequestDto);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         return "redirect:/";
     }
 }

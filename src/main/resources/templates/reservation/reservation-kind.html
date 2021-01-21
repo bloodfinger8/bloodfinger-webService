@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layout/default}">
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
-<header th:replace="fragments/bodyHeader :: bodyHeader" />
 
+<th:block layout:fragment="content">
 <section id="services" class="services">
     <div class="container">
 
@@ -66,15 +68,13 @@
     </div>
 </section><!-- End Services Section -->
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-<div th:replace="fragments/footer :: footer" />
-
 <script th:inline="javascript">
 	/*<![CDATA[*/
       $(document).ready(function(){
 	  });
 
 	  function page(val) {
+	    alert(1);
 	    var type = '';
 
 	    if(val == 1) {
@@ -91,11 +91,13 @@
             type = '남자 기본 헤어 메이크';
 	    }
 
-<!--	    location.href="/reservation/save?name=" + type;-->
+	    document.cookie = "reservationType="+type;
 	    location.href="/reservation/save";
 	  }
 
 	/*]]>*/
 </script>
+</th:block>
+
 </body>
 </html>

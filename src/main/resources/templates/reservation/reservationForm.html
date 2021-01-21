@@ -1,23 +1,24 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layout/default}">
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
+<body>
+<th:block layout:fragment="content">
 <style>
 .fieldError {
     border-color: #bd2130;
 }
 </style>
 
-<body>
-<header th:replace="fragments/bodyHeader :: bodyHeader" />
-
     <section id="about" class="about">
         <div class="container">
             <div class="form">
                 <h4>예약자 정보</h4>
-                <form role="form" action="/reservation/save" th:object="${dto}" method="post">
+                <form role="form" action="/reservation/save" th:object="${reservationSaveRequestDto}" method="post">
 
                     <div class="form-group row">
                         <label th:for="name" class="col-sm-2 col-form-label">예약자</label>
@@ -31,21 +32,27 @@
                     <div class="form-group row">
                         <label th:for="phnNo" class="col-sm-2 col-form-label">연락처</label>
                         <div class="col-sm-10">
-                            <input type="text" th:field="*{phnNo}" class="form-control" placeholder="연락처를 입력해주세요. ">
+                            <input type="text" th:field="*{phnNo}" class="form-control" placeholder="연락처를 입력해주세요. "
+                                   th:class="${#fields.hasErrors('phnNo')}? 'form-control fieldError' : 'form-control'">
+                            <p th:if="${#fields.hasErrors('phnNo')}" th:errors="*{phnNo}">Incorrect phnNo</p>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label th:for="date" class="col-sm-2 col-form-label">예약 날짜</label>
                         <div class="col-sm-10">
-                            <input type="text" th:field="*{date}" class="form-control" placeholder="연락처를 입력해주세요. ">
+                            <input type="text" th:field="*{date}" class="form-control" placeholder="예약 날짜를 입력해주세요. ex) 2021/01/01 "
+                                   th:class="${#fields.hasErrors('date')}? 'form-control fieldError' : 'form-control'">
+                            <p th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Incorrect date</p>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label th:for="time" class="col-sm-2 col-form-label">예약 시간</label>
                         <div class="col-sm-10">
-                            <input type="text" th:field="*{time}" class="form-control" placeholder="예약 시간">
+                            <input type="text" th:field="*{time}" class="form-control" placeholder="예약 시간을 입력해주세요. ex> 오후 2시"
+                                  th:class="${#fields.hasErrors('time')}? 'form-control fieldError' : 'form-control'">
+                            <p th:if="${#fields.hasErrors('time')}" th:errors="*{time}">Incorrect date</p>
                         </div>
                     </div>
 
@@ -110,12 +117,15 @@
         </div>
     </section>
 
-
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    <div th:replace="fragments/footer :: footer" />
-
     <script th:inline="javascript">
+        /*<![CDATA[*/
+      $(document).ready(function(){
 
+	  });
+
+
+	/*]]>*/
     </script>
+</th:block>
 </body>
 </html>

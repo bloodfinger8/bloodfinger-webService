@@ -22,14 +22,18 @@
         <nav class="main-nav float-right d-none d-lg-block">
             <ul>
 
+
+                <th:block th:if="${userName == null}">
+                    <li><a href="/login/lo">로그인</a></li>
+                </th:block>
                 <li><a href="/reservation/kind">예약</a></li>
-                <li><a href="/">레슨</a></li>
-                <li><a href="/">인스타</a></li>
-                <li><a href="/">위치안내</a></li>
-                <li class="drop-down"><a href="">커뮤니티</a>
+                <li><a href="/about/me">소개</a></li>
+                <li><a href="#insta" onclick="alert('아직 미오픈 하였습니다.')">인스타</a></li>
+                <li><a href="/location">위치안내</a></li>
+                <li class="drop-down"><a href="/notice/faq">커뮤니티</a>
                     <ul>
-                        <li><a href="">FAQ</a></li>
-                        <li><a href="/notice">질의응답</a></li>
+                        <li><a href="/notice/faq">자주묻는질문</a></li>
+                        <li><a href="/notice/qna">질의응답</a></li>
                     </ul>
                 </li>
             </ul>

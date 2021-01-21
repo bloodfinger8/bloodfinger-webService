@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:replace="fragments/header :: header">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+    <header th:replace="fragments/bodyHeader :: bodyHeader" />
+
+    <!-- 로그인 화면 -->
+    <th:block th:if="${userName != null}">
+        <br><br><br>
+        <div style="float:right; ">
+            <b><span id="user" th:text="${userName}"></span> 님 </b>
+            <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+        </div>
+        <br><br>
+    </th:block>
+
+    <th:block layout:fragment="content"></th:block>
+
+    <div th:replace="fragments/footer :: footer" />
+</body>
+</html>

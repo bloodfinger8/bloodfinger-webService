@@ -13,13 +13,13 @@ public class ReservationSaveRequestDto {
     @NotEmpty(message = "예약자 이름은 필수 입니다.")
     private String name;
 
-//    @NotEmpty(message = "연락처는 필수 입니다.")
+    @NotEmpty(message = "연락처는 필수 입니다.")
     private String phnNo;
 
-//    @NotEmpty(message = "예약 날짜는 필수 입니다.")
+    @NotEmpty(message = "예약 날짜는 필수 입니다.")
     private String date;
 
-//    @NotEmpty(message = "예약 시간은 필수 입니다.")
+    @NotEmpty(message = "예약 시간은 필수 입니다.")
     private String time;
 
     private String type;

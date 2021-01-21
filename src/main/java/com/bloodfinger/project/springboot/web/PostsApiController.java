@@ -1,11 +1,16 @@
 package com.bloodfinger.project.springboot.web;
 
+import com.bloodfinger.project.springboot.config.auth.LoginUser;
+import com.bloodfinger.project.springboot.config.auth.dto.SessionUser;
 import com.bloodfinger.project.springboot.service.posts.PostsService;
 import com.bloodfinger.project.springboot.web.dto.PostsResponseDto;
 import com.bloodfinger.project.springboot.web.dto.PostsSaveRequestDto;
 import com.bloodfinger.project.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @RestController

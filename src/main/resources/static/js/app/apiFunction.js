@@ -13,34 +13,7 @@ var main = {
         $('#btn-reservation').on('click' , function() {
             _this.reservationSave();
         });
-
-        const wrapper = document.getElementById("instagram");
-        fetch("https://www.instagram.com/atthej_makeup2/")
-        .then(a => {
-            return a.text();
-        }).then(a => {
-            const media = JSON.parse(a.slice(a.indexOf("edge_owner_to_timeline_media") + 30, a.indexOf("edge_saved_media") - 2));
-            media.edges.forEach(m => {
-                const node = m.node,
-                    div3 = document.createElement("div"),
-                    div2 = document.createElement("div"),
-                    a = document.createElement("a"),
-                    img = document.createElement("img");
-
-                div3.className="member portfolio-wrap",
-                div2.className= "col-lg-3 col-md-6 wow fadeInUp portfolio-item",
-                a.target="_blank",
-                a.href = `https://www.instagram.com/p/${node.shortcode}/`,
-                img.className = "img-fluid",
-                img.src = node.display_url,
-
-
-                a.append(img),
-                div3.append(a),
-                div2.append(div3),
-                wrapper.append(div2)
-            })
-        })
+        //인스타그렘...
 
     },
     save : function(){
@@ -49,6 +22,8 @@ var main = {
             author : $('#author').val(),
             content : $('#content').val()
         };
+        alert(JSON.stringify(data));
+
         $.ajax({
             type : 'POST' ,
             url : '/api/v1/posts',
@@ -57,7 +32,7 @@ var main = {
             data : JSON.stringify(data)
         }).done(function() {
             alert('글이 등록 되었습니다.');
-            window.location.href = '/notice';
+            window.location.href = '/notice/qna';
         }).fail(function() {
             alert(JSON.stringify(error));
         });
