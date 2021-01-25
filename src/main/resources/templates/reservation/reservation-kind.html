@@ -74,7 +74,6 @@
 	  });
 
 	  function page(val) {
-	    alert(1);
 	    var type = '';
 
 	    if(val == 1) {
@@ -90,7 +89,6 @@
 	    }else if(val == 6) {
             type = '남자 기본 헤어 메이크';
 	    }
-
 	    document.cookie = "reservationType="+type;
 	    location.href="/reservation/save";
 	  }

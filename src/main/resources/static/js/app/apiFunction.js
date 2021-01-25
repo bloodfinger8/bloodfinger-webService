@@ -14,7 +14,6 @@ var main = {
             _this.reservationSave();
         });
         //인스타그렘...
-
     },
     save : function(){
         var data = {
@@ -22,7 +21,6 @@ var main = {
             author : $('#author').val(),
             content : $('#content').val()
         };
-        alert(JSON.stringify(data));
 
         $.ajax({
             type : 'POST' ,

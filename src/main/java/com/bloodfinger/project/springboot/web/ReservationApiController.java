@@ -1,5 +1,7 @@
 package com.bloodfinger.project.springboot.web;
 
+import com.bloodfinger.project.springboot.config.auth.LoginUser;
+import com.bloodfinger.project.springboot.config.auth.dto.SessionUser;
 import com.bloodfinger.project.springboot.service.reservation.ReservationService;
 import com.bloodfinger.project.springboot.web.dto.ReservationSaveRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +27,12 @@ public class ReservationApiController {
     }
 
     @GetMapping("/reservation/save")
-    public String reservationSave( Model model){
+    public String reservationSave( Model model ,@LoginUser SessionUser user){
         ReservationSaveRequestDto reservationSaveRequestDto = new ReservationSaveRequestDto();
         model.addAttribute("reservationSaveRequestDto" , reservationSaveRequestDto);
+        if(user != null){
+            model.addAttribute("userName" , user.getName());
+        }
         return "reservation/reservationForm";
     }
 
@@ -37,7 +42,7 @@ public class ReservationApiController {
             return "reservation/reservationForm";
         }
 
-        //reservationService.save(reservationSaveRequestDto);
+        reservationService.save(reservationSaveRequestDto);
 
         //이메일 전송
         try {
