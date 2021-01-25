@@ -15,8 +15,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 public class IndexControllerTest {
 
-    @Autowired
-    private TestRestTemplate restTemplate;
+//    @Autowired
+//    private TestRestTemplate restTemplate;
 
     @Test
     public void main_loding(){

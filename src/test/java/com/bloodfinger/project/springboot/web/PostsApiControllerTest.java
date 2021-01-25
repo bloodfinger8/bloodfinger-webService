@@ -26,19 +26,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PostsApiControllerTest {
 
-    @LocalServerPort
-    private int port;
-
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Autowired
-    private PostsRepository postsRepository;
-
-    @After
-    public void tearDown() throws Exception {
-        postsRepository.deleteAll();
-    }
+//    @LocalServerPort
+//    private int port;
+//
+//    @Autowired
+//    private TestRestTemplate restTemplate;
+//
+//    @Autowired
+//    private PostsRepository postsRepository;
+//
+//    @After
+//    public void tearDown() throws Exception {
+//        postsRepository.deleteAll();
+//    }
 
     @Test
     public void Posts_regist() throws Exception {
