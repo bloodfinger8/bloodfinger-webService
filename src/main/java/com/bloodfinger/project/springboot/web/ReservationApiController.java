@@ -45,13 +45,13 @@ public class ReservationApiController {
         reservationService.save(reservationSaveRequestDto);
 
         //이메일 전송
-        try {
-            reservationService.sendEmail(reservationSaveRequestDto);
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            reservationService.sendEmail(reservationSaveRequestDto);
+//        } catch (MessagingException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
         return "redirect:/";
     }
