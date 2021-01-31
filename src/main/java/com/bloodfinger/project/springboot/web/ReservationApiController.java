@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @RequiredArgsConstructor
 @Controller
@@ -43,13 +45,13 @@ public class ReservationApiController {
         reservationService.save(reservationSaveRequestDto);
 
         //이메일 전송
-//        try {
-//            reservationService.sendEmail(reservationSaveRequestDto);
-//        } catch (MessagingException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            reservationService.sendEmail(reservationSaveRequestDto);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return "redirect:/";
     }
